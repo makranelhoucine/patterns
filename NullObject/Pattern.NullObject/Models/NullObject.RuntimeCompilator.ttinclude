@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="True" language="C#" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System"#>
+<#@ import namespace="System.IO"#>
+<#@ import namespace="System.Runtime.Remoting.Messaging"#>
+<#@ import namespace="System.CodeDom.Compiler"#>
+<#@ import namespace="System.Reflection"#>
+<#@ import namespace="Microsoft.CSharp"#>
+<#+
+public class RuntimeCompilator
+{
+	public Type[] Compile(string sources)
+	{
+		CSharpCodeProvider provider = new CSharpCodeProvider();
+        CompilerParameters parameters = new CompilerParameters();     
+
+		parameters.ReferencedAssemblies.Add(@"System.Core.dll");
+		foreach(string assembly in Settings.Assemblies)
+		{
+			parameters.ReferencedAssemblies.Add(Settings.SolutionPath + assembly);
+		}
+
+        parameters.GenerateInMemory = true;        
+        parameters.GenerateExecutable = false;
+
+        CompilerResults results = provider.CompileAssemblyFromSource(parameters, sources);
+        if (!results.Errors.HasErrors)
+        {
+            Assembly assembly = results.CompiledAssembly;
+			return assembly.GetTypes();
+        }
+
+		var errors = string.Empty;
+        foreach (CompilerError compilerError in results.Errors)
+        {
+            errors += compilerError.ErrorText;
+        }
+
+		errors += sources;
+        throw new ApplicationException(errors);
+	}
+}
+#>

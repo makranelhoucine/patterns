@@ -1,0 +1,54 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System"#>
+<#@ import namespace="System.IO"#>
+<#@ import namespace="System.Runtime.Remoting.Messaging"#>
+<#@ import namespace="System.CodeDom.Compiler"#>
+<#@ import namespace="System.Reflection"#>
+<#@ import namespace="Microsoft.CSharp"#>
+<#@ import namespace="System.Linq"#>
+<#@ import namespace="System.Collections"#>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ import namespace="System.Text.RegularExpressions"#>
+<#+
+public static class DefaultValues
+{
+	public static string Get(Type type)
+	{		
+		var defaultValue = "default("+ type.FullName +")";
+		if(IsString(type))
+		{
+			return "string.Empty";
+		} else if(type.Namespace == CallContext.LogicalGetData("NamespaceHint").ToString())
+		{
+			return type.Name + ".Null";
+		} else if(IsEnumerable(type))
+		{
+			string arrayValuePattern = "System.Array.Empty<{0}>()";
+			var typeOfItem = type.GetElementType()?.FullName ?? type.GenericTypeArguments[0].FullName;
+			return string.Format(arrayValuePattern, typeOfItem);
+		} else if (IsNullable(type))
+		{
+			return "null";
+		}
+
+		return defaultValue;
+	}
+
+	public static bool IsNullable(Type type)
+	{
+		return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+	}
+
+	public static bool IsEnumerable(Type type)
+	{
+		return type.IsArray || type.GetInterfaces().Contains(typeof(System.Collections.IEnumerable));
+	}
+
+	public static bool IsString(Type type)
+	{
+		return type == typeof(string);
+	}
+}
+#>
