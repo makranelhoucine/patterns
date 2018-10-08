@@ -101,12 +101,6 @@
     <Compile Include="Writer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Specification\Pattern.Specification\Pattern.Specification.csproj">
-      <Project>{6522ADA8-465D-4837-B862-9C457B1F7DDD}</Project>
-      <Name>Pattern.Specification</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="EF.Reverse.POCO.Core.ttinclude" />
     <None Include="EF.Reverse.POCO.ttinclude" />
@@ -120,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pattern.Specification\Pattern.Specification.csproj">
+      <Project>{6522ADA8-465D-4837-B862-9C457B1F7DDD}</Project>
+      <Name>Pattern.Specification</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

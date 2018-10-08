@@ -118,13 +118,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NullObject\Pattern.NullObject\Pattern.NullObject.csproj">
-      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
-      <Name>Pattern.NullObject</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pattern.Command\Pattern.Command.csproj">
       <Project>{DA3DE8B5-4CFB-4392-ADFE-4B8CCE1D0CA2}</Project>
       <Name>Pattern.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pattern.NullObject\Pattern.NullObject.csproj">
+      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
+      <Name>Pattern.NullObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -146,13 +146,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AntiCorruptionLayer\Pattern.AntiCorruptionLayer\Pattern.AntiCorruptionLayer.csproj">
-      <Project>{14E1269B-1965-42D2-B57E-6214FD012DF0}</Project>
+    <ProjectReference Include="..\Pattern.AntiCorruptionLayer\Pattern.AntiCorruptionLayer.csproj">
+      <Project>{14e1269b-1965-42d2-b57e-6214fd012df0}</Project>
       <Name>Pattern.AntiCorruptionLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NullObject\Pattern.NullObject\Pattern.NullObject.csproj">
-      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
-      <Name>Pattern.NullObject</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pattern.Command\Pattern.Command.csproj">
       <Project>{DA3DE8B5-4CFB-4392-ADFE-4B8CCE1D0CA2}</Project>
@@ -161,6 +157,10 @@
     <ProjectReference Include="..\Pattern.Domain\Pattern.Domain.csproj">
       <Project>{b66a3cf9-953b-4662-a82d-881a404683c6}</Project>
       <Name>Pattern.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pattern.NullObject\Pattern.NullObject.csproj">
+      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
+      <Name>Pattern.NullObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

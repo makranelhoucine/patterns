@@ -63,13 +63,13 @@
     <Compile Include="QuadrupedValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NullObject\Pattern.NullObject\Pattern.NullObject.csproj">
-      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
-      <Name>Pattern.NullObject</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pattern.Domain\Pattern.Domain.csproj">
       <Project>{B66A3CF9-953B-4662-A82D-881A404683C6}</Project>
       <Name>Pattern.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pattern.NullObject\Pattern.NullObject.csproj">
+      <Project>{22C7381F-E53F-4B6F-91D4-0EADE46BCA29}</Project>
+      <Name>Pattern.NullObject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
