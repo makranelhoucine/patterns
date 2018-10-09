@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Linq.Expressions;
 
     public abstract class Specification<TEntity>
@@ -11,12 +12,18 @@
         private readonly List<Expression<Func<TEntity, object>>> includes =
             new List<Expression<Func<TEntity, object>>>();
 
-        protected Specification()
+        public IReadOnlyList<Expression<Func<TEntity, object>>> Includes
         {
-            this.AddRelation();
-        }
+            get
+            {
+                if (!this.includes.Any())
+                {
+                    this.OnAddRelation(this.includes.Add);
+                }
 
-        public IReadOnlyList<Expression<Func<TEntity, object>>> Includes => this.includes;
+                return this.includes;
+            }
+        }
 
         public Specification<TEntity> And(Specification<TEntity> specification)
         {
@@ -58,11 +65,6 @@
 
         protected virtual void OnAddRelation(Action<Expression<Func<TEntity, object>>> addRelation)
         {
-        }
-
-        private void AddRelation()
-        {
-            this.OnAddRelation(this.includes.Add);
         }
     }
 }

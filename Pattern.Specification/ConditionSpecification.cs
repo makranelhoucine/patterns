@@ -22,6 +22,15 @@
             this.conditionalFunc = conditionalFunc;
         }
 
+        protected override void OnAddRelation(Action<Expression<Func<TEntity, object>>> addRelation)
+        {
+            base.OnAddRelation(addRelation);
+            foreach (var leftInclude in this.left.Includes)
+            {
+                addRelation(leftInclude);
+            }
+        }
+
         public override Expression<Func<TEntity, bool>> ToExpression()
         {
             var leftExpression = this.left.ToExpression();
