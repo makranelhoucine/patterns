@@ -3,6 +3,7 @@
     using Adapters;
 
     using Domain.Dogs;
+    using Domain.DogsAndHyenas;
 
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -17,14 +18,16 @@
         {
             Repository.IoC.ConfigureServices(services, configuration);
 
-            services.AddTransient<DogsSpecification>();
+            services.AddSingleton<DogsSpecification>()
+                    .AddSingleton<HyenaSpecification>()
+                    .AddSingleton<AnimalToDogTransform>()
+                    .AddSingleton<AnimalToHyenaTransform>()
+                    .AddSingleton<NewDogToAnimalTransform>()
+                    .AddSingleton<DogToAnimalTransform>()
+                    .AddSingleton<AnimalToAnimalModelTransform>();
 
-            services.AddTransient<AnimalToDogTransform>();
-            services.AddTransient<AnimalToHyenaTransform>();
-            services.AddTransient<NewDogToAnimalTransform>();
-            services.AddTransient<DogToAnimalTransform>();
-
-            services.AddTransient<IDogAdapter, DogAdapter>();
+            services.AddTransient<IDogAdapter, DogAdapter>()
+                    .AddTransient<IDogsAndHyenasAdapter, DogsAndHyenasAdapter>();
 
             return services;
         }

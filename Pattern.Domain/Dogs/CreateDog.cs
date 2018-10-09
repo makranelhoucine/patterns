@@ -8,7 +8,7 @@
 
     using NullObject.Models;
 
-    public class CreateDog : CommandAsync<NewDog, Dog>
+    public sealed class CreateDog : CommandAsync<NewDog, Dog>
     {
         private readonly IDogAdapter dogAdapter;
 

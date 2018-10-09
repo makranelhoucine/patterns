@@ -2,7 +2,7 @@ namespace Pattern.NullObject.Models
 {
     public abstract partial class Animal
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
         public virtual string Food { get; set; }
 

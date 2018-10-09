@@ -4,7 +4,7 @@
 
     using NullObject.Models;
 
-    public class GetDog : Command<int, Dog>
+    public sealed class GetDog : Command<int, Dog>
     {
         private readonly IDogAdapter dogAdapter;
 

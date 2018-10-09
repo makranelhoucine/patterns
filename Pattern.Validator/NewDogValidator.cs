@@ -5,7 +5,7 @@
 
     using FluentValidation;
 
-    public class NewDogValidator : AbstractValidator<NewDog>, INewDogValidator
+    public sealed class NewDogValidator : AbstractValidator<NewDog>, INewDogValidator
     {
     }
 }

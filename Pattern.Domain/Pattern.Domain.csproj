@@ -102,6 +102,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DogsAndHyenas\GetDogsAndHyenas.cs" />
+    <Compile Include="DogsAndHyenas\IDogsAndHyenasAdapter.cs" />
     <Compile Include="Dogs\UpdateDog.cs" />
     <Compile Include="Dogs\CreateDog.cs" />
     <Compile Include="Dogs\GetDog.cs" />

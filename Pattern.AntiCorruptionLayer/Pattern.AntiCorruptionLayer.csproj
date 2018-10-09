@@ -65,11 +65,12 @@
   <ItemGroup>
     <Compile Include="Adapters\AnimalAdapter.cs" />
     <Compile Include="Adapters\DogAdapter.cs" />
-    <Compile Include="Adapters\HyenaAdapter.cs" />
+    <Compile Include="Adapters\DogsAndHyenasAdapter.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specifications\DogSpecification.cs" />
     <Compile Include="Specifications\HyenaSpecification.cs" />
+    <Compile Include="Transforms\AnimalToAnimalModelTransform.cs" />
     <Compile Include="Transforms\AnimalToDogTransform.cs" />
     <Compile Include="Transforms\AnimalToHyenaTransform.cs" />
     <Compile Include="Transforms\DogToAnimalTransform.cs" />

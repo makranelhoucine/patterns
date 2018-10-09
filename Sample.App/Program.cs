@@ -8,6 +8,7 @@
 
     using Pattern.AntiCorruptionLayer;
     using Pattern.Domain.Dogs;
+    using Pattern.Domain.DogsAndHyenas;
     using Pattern.NullObject.Models;
 
     class Program
@@ -18,13 +19,16 @@
             var logger = serviceProvider.GetService<ILoggerFactory>()
                                         .CreateLogger<Program>();
 
-            var getDogs = serviceProvider.GetService<GetDogs>();
+            var getDogs = serviceProvider.GetService<GetDogsAndHyenas>();
             getDogs.Execute(
-                dogs =>
+                typeByAnimals =>
                     {
-                        foreach (Dog dog in dogs)
+                        foreach (var keyValue in typeByAnimals)
                         {
-                            logger.LogInformation(dog.Describe());
+                            foreach (var animal in keyValue.Value)
+                            {
+                                logger.LogInformation($"{keyValue.Key} - {animal.Describe()}");
+                            }
                         }
                     });
 

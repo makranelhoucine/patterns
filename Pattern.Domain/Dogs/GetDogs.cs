@@ -6,7 +6,7 @@
 
     using NullObject.Models;
 
-    public class GetDogs : Command<IReadOnlyList<Dog>>
+    public sealed class GetDogs : Command<IReadOnlyList<Dog>>
     {
         private readonly IDogAdapter dogAdapter;
 

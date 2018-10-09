@@ -2,6 +2,8 @@
 {
     using Dogs;
 
+    using DogsAndHyenas;
+
     using Microsoft.Extensions.DependencyInjection;
 
     public static class IoC
@@ -11,7 +13,8 @@
             serviceCollection.AddTransient<CreateDog>()
                              .AddTransient<GetDog>()
                              .AddTransient<GetDogs>()
-                             .AddTransient<UpdateDog>();
+                             .AddTransient<UpdateDog>()
+                             .AddTransient<GetDogsAndHyenas>();
             return serviceCollection;
         }
     }

@@ -6,7 +6,7 @@
 
     using NullObject.Models;
 
-    public class DogValidator : AbstractValidator<Dog>, IDogValidator
+    public sealed class DogValidator : AbstractValidator<Dog>, IDogValidator
     {
         public DogValidator()
         {

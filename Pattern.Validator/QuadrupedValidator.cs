@@ -4,7 +4,7 @@
 
     using NullObject.Models;
 
-    public class QuadrupedValidator : AbstractValidator<Animal>
+    public sealed class QuadrupedValidator : AbstractValidator<Animal>
     {
         private const int FourLegs = 4;
 

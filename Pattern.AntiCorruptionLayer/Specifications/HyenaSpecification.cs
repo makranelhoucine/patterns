@@ -11,9 +11,7 @@
     {
         public const int FamilyId = 2;
 
-        public override Expression<Func<Animal, bool>> ToExpression()
-        {
-            return animal => animal.FamilyId == FamilyId;
-        }
+        public override Expression<Func<Animal, bool>> ToExpression() => animal => animal.FamilyId == FamilyId;
+
     }
 }
